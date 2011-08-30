@@ -46,9 +46,10 @@
 ;;; Code
 (deftheme zenburn "The Zenburn color theme")
 
+;; color definitions
+;; colors with +x are lighter, colors with -x are darker
 (let ((class '((class color) (min-colors 89)))
-      ;; Zenburn palette
-      ;; colors with +x are lighter, colors with -x are darker
+      ;; Zenburn pallette
       (zenburn-fg "#dcdccc")
       (zenburn-fg-1 "#656555")
       (zenburn-bg-1 "#2b2b2b")
@@ -83,7 +84,7 @@
   (custom-theme-set-faces 
    'zenburn
    '(link ((t (:foreground "#f0dfaf" :underline t))))
-   '(link-visited ((t (:foreground "#8b008b" :underline t))))
+   '(link-visited ((t (:foreground "magenta3" :underline t))))
    '(button ((t (:underline t))))
 
    ;;; define some reusable zenburn faces that we can inherit from afterwards
@@ -96,9 +97,11 @@
    `(default ((,class (:foreground ,zenburn-fg :background ,zenburn-bg))))
    `(cursor ((,class (:foreground ,zenburn-fg))))
    `(escape-glyph-face ((,class (:foreground ,zenburn-red))))
-   `(fringe ((,class (:foreground ,zenburn-fg :background ,zenburn-bg))))
+   `(fringe ((,class (:foreground ,zenburn-fg :background ,zenburn-bg-1))))
+   ;`(fringe ((,class (:foreground ,zenburn-fg :background ,zenburn-bg))))
    `(header-line ((,class (:foreground ,zenburn-yellow :background ,zenburn-bg-1
-                                  :box (:color ,zenburn-green :line-width 2)))))
+                                  ;; :box (:color ,zenburn-green :line-width 2)
+                                       ))))
    `(highlight ((,class (:background ,zenburn-bg+1))))
 
    ;;; compilation
@@ -129,8 +132,8 @@
    `(menu ((,class (:foreground ,zenburn-fg :background ,zenburn-bg))))
    `(minibuffer-prompt ((,class (:foreground ,zenburn-yellow))))
    `(mode-line
-     ((,class (:foreground ,zenburn-green+1 :background ,zenburn-bg-1))))
-   `(mode-line-buffer-id ((,class (:foreground ,zenburn-yellow :weight bold))))
+     ((,class (:foreground ,zenburn-yellow :background ,zenburn-bg-1))))
+   ;; `(mode-line-buffer-id ((,class (:foreground ,zenburn-yellow :weight bold))))
    `(mode-line-inactive
      ((,class (:foreground ,zenburn-green-1  :background ,zenburn-bg-1))))
    `(region ((,class (:background ,zenburn-bg-1))))
@@ -138,11 +141,11 @@
    `(trailing-whitespace ((,class (:background ,zenburn-red))))
    `(vertical-border ((,class (:foreground ,zenburn-fg))))
 
-   ;;; font lock
+;;; font lock
    `(font-lock-builtin-face ((,class (:foreground ,zenburn-blue))))
    `(font-lock-comment-face ((,class (:foreground ,zenburn-green))))
    `(font-lock-comment-delimiter-face ((,class (:foreground ,zenburn-green))))
-   `(font-lock-constant-face ((,class (:foreground ,zenburn-green+4))))
+   `(font-lock-constant-face ((,class (:foreground ,zenburn-fg))))
    `(font-lock-doc-face ((,class (:foreground ,zenburn-green+1))))
    `(font-lock-doc-string-face ((,class (:foreground ,zenburn-blue+1))))
    `(font-lock-function-name-face ((,class (:foreground ,zenburn-blue))))
@@ -150,11 +153,11 @@
    `(font-lock-negation-char-face ((,class (:foreground ,zenburn-fg))))
    `(font-lock-preprocessor-face ((,class (:foreground ,zenburn-blue))))
    `(font-lock-string-face ((,class (:foreground ,zenburn-red))))
-   `(font-lock-type-face ((,class (:foreground ,zenburn-blue))))
-   `(font-lock-variable-name-face ((,class (:foreground ,zenburn-orange))))
+   `(font-lock-type-face ((,class (:foreground ,zenburn-green+3))))
+   `(font-lock-variable-name-face ((,class (:foreground ,zenburn-yellow))))
    `(font-lock-warning-face ((,class (:foreground ,zenburn-yellow-1 :weight bold :underline t))))
 
-   ;;; external
+;;; external
 
    ;; diff
    `(diff-added ((,class (:foreground ,zenburn-green+4))))
@@ -402,8 +405,8 @@
    `(rpm-spec-var-face ((,class (:foreground ,zenburn-red))))
 
    ;; show-paren
-   `(show-paren-mismatch ((,class (:foreground ,zenburn-red-3 :background ,zenburn-bg :weight bold))))
-   `(show-paren-match ((,class (:foreground ,zenburn-blue-1 :background ,zenburn-bg :weight bold))))
+   `(show-paren-mismatch ((,class (:foreground ,zenburn-red-3 :weight bold))))
+   `(show-paren-match ((,class (:foreground ,zenburn-blue-1 :weight bold))))
 
    ;; wanderlust
    `(wl-highlight-folder-few-face ((,class (:foreground ,zenburn-red-2))))
@@ -446,3 +449,4 @@
 ;; End:
 
 ;;; zenburn-theme.el ends here.
+
