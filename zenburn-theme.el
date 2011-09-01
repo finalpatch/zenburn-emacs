@@ -205,7 +205,7 @@
    `(erc-nick-msg-face ((,class (:inherit erc-default))))
    `(erc-notice-face ((,class (:foreground ,zenburn-green))))
    `(erc-pal-face ((,class (:foreground ,zenburn-orange :weight bold))))
-   `(erc-prompt-face ((,class (:foreground ,zenburn-orange :weight bold))))
+   `(erc-prompt-face ((,class (:foreground ,zenburn-bg-1 :background ,zenburn-green :weight bold))))
    `(erc-timestamp-face ((,class (:foreground ,zenburn-green+1))))
    `(erc-underline-face ((t (:underline t))))
 
