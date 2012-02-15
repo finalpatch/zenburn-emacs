@@ -4,7 +4,7 @@
 
 ;; Author: Bozhidar Batsov <bozhidar.batsov@gmail.com>
 ;; URL: http://github.com/bbatsov/zenburn-emacs
-;; Version: 0.1
+;; Version: 1.2
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -53,9 +53,11 @@
       (zenburn-fg "#dcdccc")
       (zenburn-fg-1 "#656555")
       (zenburn-bg-1 "#2b2b2b")
+      (zenburn-bg-05 "#383838")
       (zenburn-bg "#3f3f3f")
       (zenburn-bg+1 "#4f4f4f")
       (zenburn-bg+2 "#5f5f5f")
+      (zenburn-bg+3 "#6f6f6f")
       (zenburn-red+1 "#dca3a3")
       (zenburn-red "#cc9393")
       (zenburn-red-1 "#bc8383")
@@ -81,17 +83,13 @@
       (zenburn-blue-4 "#4c7073")
       (zenburn-blue-5 "#366060")
       (zenburn-magenta "#dc8cc3"))
-  (custom-theme-set-faces 
+  (custom-theme-set-faces
    'zenburn
    '(link ((t (:foreground "#f0dfaf" :underline t))))
    '(link-visited ((t (:foreground "magenta3" :underline t))))
    '(button ((t (:underline t))))
-
-   ;;; define some reusable zenburn faces that we can inherit from afterwards
-   `(zenburn-strong-1-face ((,class (:foreground ,zenburn-yellow :weight bold))))
-   `(zenburn-strong-2-face ((,class (:foreground ,zenburn-orange :weight bold))))
-   `(zenburn-warning-face ((,class (:foreground ,zenburn-yellow-1 :weight bold :underline t))))
-   `(zenburn-error-face ((,class (:foreground ,zenburn-red-1 :weight bold :underline t))))
+   `(link ((,class (:foreground ,zenburn-yellow :underline t :weight bold))))
+   `(link-visited ((,class (:foreground ,zenburn-yellow-2 :underline t :weight normal))))
 
    ;;; basic coloring
    `(default ((,class (:foreground ,zenburn-fg :background ,zenburn-bg))))
@@ -132,10 +130,14 @@
    `(menu ((,class (:foreground ,zenburn-fg :background ,zenburn-bg))))
    `(minibuffer-prompt ((,class (:foreground ,zenburn-yellow))))
    `(mode-line
-     ((,class (:foreground ,zenburn-yellow :background ,zenburn-bg-1))))
-   ;; `(mode-line-buffer-id ((,class (:foreground ,zenburn-yellow :weight bold))))
+     ((,class (:foreground ,zenburn-green+1
+                           :background ,zenburn-bg-1
+                           :box (:line-width -1 :style released-button)))))
+   `(mode-line-buffer-id ((,class (:foreground ,zenburn-yellow :weight bold))))
    `(mode-line-inactive
-     ((,class (:foreground ,zenburn-green-1  :background ,zenburn-bg-1))))
+     ((,class (:foreground ,zenburn-green-1
+                           :background ,zenburn-bg-05
+                           :box (:line-width -1 :style released-button)))))
    `(region ((,class (:background ,zenburn-bg-1))))
    `(secondary-selection ((,class (:background ,zenburn-bg+2))))
    `(trailing-whitespace ((,class (:background ,zenburn-red))))
@@ -157,7 +159,23 @@
    `(font-lock-variable-name-face ((,class (:foreground ,zenburn-yellow))))
    `(font-lock-warning-face ((,class (:foreground ,zenburn-yellow-1 :weight bold :underline t))))
 
-;;; external
+   `(c-annotation-face ((,class (:inherit font-lock-constant-face))))
+
+   ;;; external
+
+   ;; full-ack
+   `(ack-separator ((,class (:foreground ,zenburn-fg))))
+   `(ack-file ((,class (:foreground ,zenburn-blue))))
+   `(ack-line ((,class (:foreground ,zenburn-yellow))))
+   `(ack-match ((,class (:foreground ,zenburn-orange :background ,zenburn-bg-1 :weigth bold))))
+
+   ;; auto-complete
+   `(ac-candidate-face ((,class (:background ,zenburn-bg+3 :foreground "black"))))
+   `(ac-selection-face ((,class (:background ,zenburn-blue-4 :foreground ,zenburn-fg))))
+   `(popup-tip-face ((,class (:background ,zenburn-yellow-2 :foreground "black"))))
+   `(popup-scroll-bar-foreground-face ((,class (:background ,zenburn-blue-5))))
+   `(popup-scroll-bar-background-face ((,class (:background ,zenburn-bg-1))))
+   `(popup-isearch-match ((,class (:background ,zenburn-bg :foreground ,zenburn-fg))))
 
    ;; diff
    `(diff-added ((,class (:foreground ,zenburn-green+4))))
@@ -191,7 +209,7 @@
    ;; erc
    `(erc-action-face ((,class (:inherit erc-default-face))))
    `(erc-bold-face ((,class (:weight bold))))
-   `(erc-current-nick-face ((,class (:foreground ,zenburn-yellow :weight bold))))
+   `(erc-current-nick-face ((,class (:foreground ,zenburn-blue :weight bold))))
    `(erc-dangerous-host-face ((,class (:inherit font-lock-warning))))
    `(erc-default-face ((,class (:foreground ,zenburn-fg))))
    `(erc-direct-msg-face ((,class (:inherit erc-default))))
@@ -199,13 +217,13 @@
    `(erc-fool-face ((,class (:inherit erc-default))))
    `(erc-highlight-face ((,class (:inherit hover-highlight))))
    `(erc-input-face ((,class (:foreground ,zenburn-yellow))))
-   `(erc-keyword-face ((,class (:foreground ,zenburn-yellow :weight bold))))
-   `(erc-nick-default-face ((,class (:weigth bold))))
+   `(erc-keyword-face ((,class (:foreground ,zenburn-blue :weight bold))))
+   `(erc-nick-default-face ((,class (:foreground ,zenburn-yellow :weight bold))))
    `(erc-my-nick-face ((,class (:foreground ,zenburn-red :weigth bold))))
    `(erc-nick-msg-face ((,class (:inherit erc-default))))
    `(erc-notice-face ((,class (:foreground ,zenburn-green))))
    `(erc-pal-face ((,class (:foreground ,zenburn-orange :weight bold))))
-   `(erc-prompt-face ((,class (:foreground ,zenburn-bg-1 :background ,zenburn-green :weight bold))))
+   `(erc-prompt-face ((,class (:foreground ,zenburn-orange :background ,zenburn-bg :weight bold))))
    `(erc-timestamp-face ((,class (:foreground ,zenburn-green+1))))
    `(erc-underline-face ((t (:underline t))))
 
@@ -408,6 +426,21 @@
    `(show-paren-mismatch ((,class (:foreground ,zenburn-red-3 :weight bold))))
    `(show-paren-match ((,class (:foreground ,zenburn-blue-1 :weight bold))))
 
+   ;; SLIME
+   `(slime-repl-inputed-output-face ((,class (:foreground ,zenburn-red))))
+
+   ;; whitespace-mode
+   `(whitespace-space ((,class (:background ,zenburn-bg :foreground ,zenburn-bg+1))))
+   `(whitespace-hspace ((,class (:background ,zenburn-bg :foreground ,zenburn-bg+1))))
+   `(whitespace-tab ((,class (:background ,zenburn-bg :foreground ,zenburn-red))))
+   `(whitespace-newline ((,class (:foreground ,zenburn-bg+1))))
+   `(whitespace-trailing ((,class (:foreground ,zenburn-red :background ,zenburn-bg))))
+   `(whitespace-line ((,class (:background ,zenburn-bg-05 :foreground ,zenburn-magenta))))
+   `(whitespace-space-before-tab ((,class (:background ,zenburn-orange :foreground ,zenburn-orange))))
+   `(whitespace-indentation ((,class (:background ,zenburn-yellow, :foreground ,zenburn-red))))
+   `(whitespace-empty ((,class (:background ,zenburn-yellow :foreground ,zenburn-red))))
+   `(whitespace-space-after-tab ((,class (:background ,zenburn-yellow :foreground ,zenburn-red))))
+
    ;; wanderlust
    `(wl-highlight-folder-few-face ((,class (:foreground ,zenburn-red-2))))
    `(wl-highlight-folder-many-face ((,class (:foreground ,zenburn-red-1))))
@@ -435,12 +468,20 @@
    `(wl-highlight-summary-thread-top-face ((,class (:foreground ,zenburn-yellow))))
    `(wl-highlight-thread-indent-face ((,class (:foreground ,zenburn-magenta))))
    `(wl-highlight-summary-refiled-face ((,class (:foreground ,zenburn-fg))))
-   `(wl-highlight-summary-displaying-face ((,class (:underline t :weight bold))))))
+   `(wl-highlight-summary-displaying-face ((,class (:underline t :weight bold))))
+
+   ;; which-func-mode
+   `(which-func ((,class (:foreground ,zenburn-green+1))))))
 
 (custom-theme-set-variables
  'zenburn
- '(ansi-color-names-vector [zenburn-bg zenburn-red zenburn-green zenburn-yellow 
+ '(ansi-color-names-vector [zenburn-bg zenburn-red zenburn-green zenburn-yellow
                                        zenburn-blue zenburn-magenta zenburn-cyan zenburn-fg]))
+
+;;;###autoload
+(when load-file-name
+  (add-to-list 'custom-theme-load-path
+               (file-name-as-directory (file-name-directory load-file-name))))
 
 (provide-theme 'zenburn)
 
