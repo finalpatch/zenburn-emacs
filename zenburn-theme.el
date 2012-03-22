@@ -4,7 +4,7 @@
 
 ;; Author: Bozhidar Batsov <bozhidar.batsov@gmail.com>
 ;; URL: http://github.com/bbatsov/zenburn-emacs
-;; Version: 1.2
+;; Version: 1.4
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -289,6 +289,9 @@
    `(gnus-signature-face ((,class (:foreground ,zenburn-yellow))))
    `(gnus-x-face ((,class (:background ,zenburn-fg :foreground ,zenburn-bg))))
 
+   ;; helm
+   `(helm-selection ((,class (:background ,zenburn-bg-1))))
+
    ;; hl-line-mode
    `(hl-line-face ((,class (:background ,zenburn-bg-1))))
 
@@ -297,8 +300,30 @@
    `(ido-only-match ((,class (:foreground ,zenburn-orange :weight bold))))
    `(ido-subdir ((,class (:foreground ,zenburn-yellow))))
 
+   ;; js2-mode
+   `(js2-warning-face ((,class (:underline ,zenburn-orange))))
+   `(js2-error-face ((,class (:foreground ,zenburn-red :weight bold))))
+   `(js2-jsdoc-tag-face ((,class (:foreground ,zenburn-green-1))))
+   `(js2-jsdoc-type-face ((,class (:foreground ,zenburn-green+2))))
+   `(js2-jsdoc-value-face ((,class (:foreground ,zenburn-green+3))))
+   `(js2-function-param-face ((,class (:foreground, zenburn-green+3))))
+   `(js2-external-variable-face ((,class (:foreground ,zenburn-orange))))
+
+   ;; jabber-mode
+   `(jabber-roster-user-away ((,class (:foreground ,zenburn-green+2))))
+   `(jabber-roster-user-online ((,class (:foreground ,zenburn-blue-1))))
+   `(jabber-roster-user-dnd ((,class (:foreground ,zenburn-red+1))))
+   `(jabber-rare-time-face ((,class (:foreground ,zenburn-green+1))))
+   `(jabber-chat-prompt-local ((,class (:foreground ,zenburn-blue-1))))
+   `(jabber-chat-prompt-foreign ((,class (:foreground ,zenburn-red+1))))
+   `(jabber-activity-face((,class (:foreground ,zenburn-red+1))))
+   `(jabber-activity-personal-face ((,class (:foreground ,zenburn-blue+1))))
+   `(jabber-title-small ((,class (:height 1.1 :weight bold))))
+   `(jabber-title-medium ((,class (:height 1.2 :weight bold))))
+   `(jabber-title-large ((,class (:height 1.3 :weight bold))))
+
    ;; linum-mode
-   `(linum ((,class (:foreground ,zenburn-fg-1 :background ,zenburn-bg-1))))
+   `(linum ((,class (:foreground ,zenburn-green+2 :background ,zenburn-bg))))
 
    ;; magit
    `(magit-section-title ((,class (:foreground ,zenburn-yellow :weight bold))))
@@ -422,6 +447,14 @@
    `(rpm-spec-tag-face ((,class (:foreground ,zenburn-blue))))
    `(rpm-spec-var-face ((,class (:foreground ,zenburn-red))))
 
+   ;; rst-mode
+   `(rst-level-1-face ((,class (:foreground ,zenburn-orange))))
+   `(rst-level-2-face ((,class (:foreground ,zenburn-green+1))))
+   `(rst-level-3-face ((,class (:foreground ,zenburn-blue-1))))
+   `(rst-level-4-face ((,class (:foreground ,zenburn-yellow-2))))
+   `(rst-level-5-face ((,class (:foreground ,zenburn-cyan))))
+   `(rst-level-6-face ((,class (:foreground ,zenburn-green-1))))
+
    ;; show-paren
    `(show-paren-mismatch ((,class (:foreground ,zenburn-red-3 :weight bold))))
    `(show-paren-match ((,class (:foreground ,zenburn-blue-1 :weight bold))))
@@ -437,7 +470,7 @@
    `(whitespace-trailing ((,class (:foreground ,zenburn-red :background ,zenburn-bg))))
    `(whitespace-line ((,class (:background ,zenburn-bg-05 :foreground ,zenburn-magenta))))
    `(whitespace-space-before-tab ((,class (:background ,zenburn-orange :foreground ,zenburn-orange))))
-   `(whitespace-indentation ((,class (:background ,zenburn-yellow, :foreground ,zenburn-red))))
+   `(whitespace-indentation ((,class (:background ,zenburn-yellow :foreground ,zenburn-red))))
    `(whitespace-empty ((,class (:background ,zenburn-yellow :foreground ,zenburn-red))))
    `(whitespace-space-after-tab ((,class (:background ,zenburn-yellow :foreground ,zenburn-red))))
 
@@ -471,12 +504,16 @@
    `(wl-highlight-summary-displaying-face ((,class (:underline t :weight bold))))
 
    ;; which-func-mode
-   `(which-func ((,class (:foreground ,zenburn-green+1))))))
+   `(which-func ((,class (:foreground ,zenburn-green+1)))))
 
-(custom-theme-set-variables
- 'zenburn
- '(ansi-color-names-vector [zenburn-bg zenburn-red zenburn-green zenburn-yellow
-                                       zenburn-blue zenburn-magenta zenburn-cyan zenburn-fg]))
+  ;;; custom theme variables
+  (custom-theme-set-variables
+   'zenburn
+   `(ansi-color-names-vector [,zenburn-bg ,zenburn-red ,zenburn-green ,zenburn-yellow
+                                          ,zenburn-blue ,zenburn-magenta ,zenburn-cyan ,zenburn-fg])
+
+   ;; fill-column-indicator
+   `(fci-rule-color ,zenburn-bg-05)))
 
 ;;;###autoload
 (when load-file-name
