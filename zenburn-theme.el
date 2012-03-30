@@ -130,10 +130,10 @@
    `(menu ((,class (:foreground ,zenburn-fg :background ,zenburn-bg))))
    `(minibuffer-prompt ((,class (:foreground ,zenburn-yellow))))
    `(mode-line
-     ((,class (:foreground ,zenburn-green+1
+     ((,class (:foreground ,zenburn-yellow
                            :background ,zenburn-bg-1
                            :box (:line-width -1 :style released-button)))))
-   `(mode-line-buffer-id ((,class (:foreground ,zenburn-yellow :weight bold))))
+   `(mode-line-buffer-id ((,class (:weight bold))))
    `(mode-line-inactive
      ((,class (:foreground ,zenburn-green-1
                            :background ,zenburn-bg-05
