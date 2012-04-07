@@ -46,10 +46,9 @@
 ;;; Code
 (deftheme zenburn "The Zenburn color theme")
 
-;; color definitions
-;; colors with +x are lighter, colors with -x are darker
 (let ((class '((class color) (min-colors 89)))
-      ;; Zenburn pallette
+      ;; Zenburn palette
+      ;; colors with +x are lighter, colors with -x are darker
       (zenburn-fg "#dcdccc")
       (zenburn-fg-1 "#656555")
       (zenburn-bg-1 "#2b2b2b")
@@ -85,8 +84,6 @@
       (zenburn-magenta "#dc8cc3"))
   (custom-theme-set-faces
    'zenburn
-   '(link ((t (:foreground "#f0dfaf" :underline t))))
-   '(link-visited ((t (:foreground "magenta3" :underline t))))
    '(button ((t (:underline t))))
    `(link ((,class (:foreground ,zenburn-yellow :underline t :weight bold))))
    `(link-visited ((,class (:foreground ,zenburn-yellow-2 :underline t :weight normal))))
@@ -96,11 +93,9 @@
    `(cursor ((,class (:foreground ,zenburn-fg))))
    `(escape-glyph-face ((,class (:foreground ,zenburn-red))))
    `(fringe ((,class (:foreground ,zenburn-fg :background ,zenburn-bg-1))))
-   ;`(fringe ((,class (:foreground ,zenburn-fg :background ,zenburn-bg))))
    `(header-line ((,class (:foreground ,zenburn-yellow :background ,zenburn-bg-1
-                                  ;; :box (:color ,zenburn-green :line-width 2)
                                        ))))
-   `(highlight ((,class (:background ,zenburn-bg+1))))
+   `(highlight ((,class (:background ,zenburn-bg-05))))
 
    ;;; compilation
    `(compilation-column-face ((,class (:foreground ,zenburn-yellow))))
@@ -147,7 +142,7 @@
    `(font-lock-builtin-face ((,class (:foreground ,zenburn-blue))))
    `(font-lock-comment-face ((,class (:foreground ,zenburn-green))))
    `(font-lock-comment-delimiter-face ((,class (:foreground ,zenburn-green))))
-   `(font-lock-constant-face ((,class (:foreground ,zenburn-fg))))
+   `(font-lock-constant-face ((,class (:foreground ,zenburn-green+4))))
    `(font-lock-doc-face ((,class (:foreground ,zenburn-green+1))))
    `(font-lock-doc-string-face ((,class (:foreground ,zenburn-blue+1))))
    `(font-lock-function-name-face ((,class (:foreground ,zenburn-blue))))
@@ -156,7 +151,7 @@
    `(font-lock-preprocessor-face ((,class (:foreground ,zenburn-blue))))
    `(font-lock-string-face ((,class (:foreground ,zenburn-red))))
    `(font-lock-type-face ((,class (:foreground ,zenburn-green+3))))
-   `(font-lock-variable-name-face ((,class (:foreground ,zenburn-yellow))))
+   `(font-lock-variable-name-face ((,class (:foreground ,zenburn-orange))))
    `(font-lock-warning-face ((,class (:foreground ,zenburn-yellow-1 :weight bold :underline t))))
 
    `(c-annotation-face ((,class (:inherit font-lock-constant-face))))
@@ -462,9 +457,8 @@
    `(rst-level-6-face ((,class (:foreground ,zenburn-green-1))))
 
    ;; show-paren
-   `(show-paren-mismatch ((,class (:foreground ,zenburn-red-3 :weight bold))))
-   `(show-paren-match ((,class (:foreground ,zenburn-blue-1 :weight bold))))
-
+   `(show-paren-mismatch ((,class (:foreground ,zenburn-red-3 :background ,zenburn-bg :weight bold))))
+   `(show-paren-match ((,class (:foreground ,zenburn-blue-1 :background ,zenburn-bg :weight bold))))
    ;; SLIME
    `(slime-repl-inputed-output-face ((,class (:foreground ,zenburn-red))))
 
